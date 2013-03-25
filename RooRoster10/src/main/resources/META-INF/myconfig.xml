@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+  <!--<environmentMode>DEBUG</environmentMode>-->
+
+  <!-- Domain model configuration -->
+  <solutionClass>org.feely.roster.drools.domain.ShiftAssignment</solutionClass>
+  <planningEntityClass>org.feely.roster.domain.Employee</planningEntityClass>
+
+  <!-- Score configuration -->
+  <scoreDirectorFactory>
+    <scoreDefinitionType>HARD_AND_SOFT</scoreDefinitionType>
+    <simpleScoreCalculatorClass>org.feely.roster.drools.planner.solver.RosterScoreCalculator</simpleScoreCalculatorClass>
+  </scoreDirectorFactory>
+
+  <!-- Optimization algorithms configuration -->
+  <termination>
+    <maximumSecondsSpend>5</maximumSecondsSpend>
+  </termination>
+  <constructionHeuristic>
+    <constructionHeuristicType>BEST_FIT</constructionHeuristicType>
+  </constructionHeuristic>
+  <localSearch>
+    <acceptor>
+      <planningEntityTabuSize>7</planningEntityTabuSize>
+    </acceptor>
+    <forager>
+      <minimalAcceptedSelection>1000</minimalAcceptedSelection>
+    </forager>
+  </localSearch>
+</solver>
